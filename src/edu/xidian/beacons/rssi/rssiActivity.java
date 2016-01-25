@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.xidian.FindBeacons.FindBeacons;
 import edu.xidian.FindBeacons.FindBeacons.OnBeaconsListener;
 import edu.xidian.logtofile.LogcatHelper;
@@ -148,6 +149,26 @@ public class rssiActivity extends Activity {
         mFindBeacons.closeSearcher(); 
         loghelper.stop();
     }
+    
+    /** 
+     * 连续两次按回退键，退出程序。
+     * 使得下次程序执行从onCreate()开始，避免数据库初始化等问题的出现。
+     */
+    private long mPressedTime = 0;
+    @Override
+	public void onBackPressed() {
+    	long mNowTime = System.currentTimeMillis();//获取第一次按键时间
+    	if((mNowTime - mPressedTime) > 2000){//比较两次按键时间差
+    	Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+    	mPressedTime = mNowTime;
+    	}
+    	else{//退出程序
+    	   this.finish();
+    	   System.exit(0);
+    	}
+
+		// super.onBackPressed();
+	}
     
     /** 开始记录日志文件 */
     public void onStartLog(View view) {
