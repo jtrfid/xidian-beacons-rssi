@@ -87,9 +87,9 @@ public class rssiActivity extends Activity {
 		end_logfile = (Button)findViewById(R.id.end_log);
 		
 		// 设置SD卡中的日志文件,sd卡根目录/rssiRecord/mydistance.log
-		//loghelper = LogcatHelper.getInstance(this,"rssiRecord","mydistance.log");
+		loghelper = LogcatHelper.getInstance(this,"rssiRecord","mydistance.log");
 		// 设置SD卡中的日志文件,sd卡根目录/mydistance.log
-		loghelper = LogcatHelper.getInstance(this,"","mydistance.log");
+		//loghelper = LogcatHelper.getInstance(this,"","mydistance.log");
 		
 		// 打印D级以上(包括D,I,W,E,F)的TAG，其它tag不打印
 		//Logformat = TAG + ":D *:S";
@@ -186,7 +186,8 @@ public class rssiActivity extends Activity {
     
     /** 删除日志文件文件 */
     public void onDelLog(View view) {
-    	loghelper.delLogDir();
+    	// loghelper.delLogDir();  // 删除日志目录和文件，如果日志文件和数据库文件放在一个目录下，不要用此函数。
+    	loghelper.delLogfile();
     }
        
     /** 开始查找附近beacons */
