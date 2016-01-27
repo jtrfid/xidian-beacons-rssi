@@ -120,14 +120,22 @@
         android:text="采样周期(s)" />
 
     <!-- 提示信息 -->  
-    <TextView
-        android:id="@+id/monitoringText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:id="@+id/scrollView" 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:scrollbars="vertical"
+        android:fadeScrollbars="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/SamplePeriod_edit"
-        android:ems="10"
-        android:gravity="left|bottom"
-        android:text="提示信息" />
+        android:layout_below="@+id/SamplePeriod_edit" > 
+        <TextView
+	        android:id="@+id/monitoringText"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:isScrollContainer="true"      
+	        android:ems="10"
+	        android:gravity="left|bottom"
+	        android:text="提示信息" />
+     </ScrollView>
 
 </RelativeLayout>
